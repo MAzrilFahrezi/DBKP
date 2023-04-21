@@ -58,4 +58,9 @@ class authController extends Controller
             'message' => 'Logout Berhasil'
         ];
     }
+
+    public function getUser()
+    {
+        return Auth::user();
+    }
 }

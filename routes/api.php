@@ -32,4 +32,5 @@ Route::middleware('auth:sanctum')->group(function (){
     // Route::apiResource('inspection', inspectionController::class);
     Route::apiResource('barang', barangController::class);
     Route::post('logout', [authController::class, 'logout']);
+    Route::get('user', [authController::class, 'getUser']);
 });
