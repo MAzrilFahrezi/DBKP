@@ -8,9 +8,10 @@ use Illuminate\Http\Request;
 
 class barangController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return BarangResource::collection(Barang::all());
+        $kapal_id = $request -> query("id");
+        return BarangResource::collection(Barang::where("kapal_id", "=", $kapal_id));
     }
 
     public function store(Request $request)
