@@ -20,6 +20,7 @@ class BarangResource extends JsonResource
             'volume' => $this->volume,
             'manufaktur' => $this->manufaktur,
             'gambar' => $this->gambar,
+            'kapal_id' => $this->kapal_id,
             'date_of_inspection' => $this->date_of_inspection,
             'next_date_of_inspection' => $this->next_date_of_inspection,
             'new_supply' => $this->new_supply,
