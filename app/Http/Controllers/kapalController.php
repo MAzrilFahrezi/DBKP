@@ -13,11 +13,11 @@ class kapalController extends Controller
     public function index(Request $request)
     {
         
-        $nama = $request -> query('nama');
+        $nama = $request->query('nama');
 
         if($nama) {
 
-            $kapal = Kapal::where('nama_kapal', '=', $nama) -> get();
+            $kapal = Kapal::where('nama_kapal', 'LIKE', "%{$nama}%")->get();
             return KapalResource::collection($kapal);
 
         } else {
