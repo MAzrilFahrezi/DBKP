@@ -74,7 +74,7 @@ class authController extends Controller
 
         $id = Auth::user()->id;
         $user = User::find($id);
-        dd($user);
+        dd($validated);
         $user->update($validated);
         return[
             'message' => 'Update Data Berhasil'
