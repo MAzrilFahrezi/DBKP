@@ -10,9 +10,21 @@ class kapalController extends Controller
 {
     //
 
-    public function index()
+    public function index(Request $request)
     {
-        return KapalResource::collection(Kapal::all());
+        
+        $nama = $request -> query('nama');
+
+        if($nama) {
+
+            $kapal = Kapal::where('nama_kapal', '=', $nama) -> get();
+            return KapalResource::collection($kapal);
+
+        } else {
+            return KapalResource::collection(Kapal::all());
+        }
+
+        
     }
 
     public function store(Request $request)
