@@ -32,5 +32,5 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::apiResource('barang', barangController::class);
     Route::post('logout', [authController::class, 'logout']);
     Route::get('user', [authController::class, 'getUser']);
-    Route::put('updateUser', [authController::class, 'updateUser']);
+    Route::put('/updateUser', [authController::class, 'updateUser']);
 });
