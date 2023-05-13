@@ -11,7 +11,19 @@ class barangController extends Controller
     public function index(Request $request)
     {
         $kapal_id = $request -> query("id");
-        return BarangResource::collection(Barang::where("kapal_id", "=", $kapal_id)-> get());
+        $nama = $request->query('nama');
+
+        if($nama) {
+
+            $barang = Barang::where("kapal_id", "=", $kapal_id)->
+            where('nama_barang', 'LIKE', "%{$nama}%")->get();
+            return BarangResource::collection($barang);
+
+        } else {
+            return BarangResource::collection(Barang::where("kapal_id", "=", $kapal_id)-> get());
+        }
+
+        
     }
 
     public function store(Request $request)
