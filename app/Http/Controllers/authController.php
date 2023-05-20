@@ -15,7 +15,7 @@ class authController extends Controller
             'name' => 'required|string',
             'email' => 'required|string',
             'no_hp' => 'required|string',
-            'is_admin' => 'required|boolean',
+            'is_admin' => 'required|string',
             'password' => 'required|string',
             
         ]);
@@ -70,6 +70,8 @@ class authController extends Controller
             'name' => 'string',
             'email' => 'string',
             'no_hp' => 'string',
+            'is_admin' => 'string',
+            'password' => 'password'
         ]);
 
         $id = Auth::user()->id;
