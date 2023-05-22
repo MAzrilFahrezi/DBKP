@@ -64,6 +64,11 @@ class authController extends Controller
         return Auth::user();
     }
 
+    public function getAllUser()
+    {
+        return User::all();
+    }
+
     public function updateUser(Request $request){
         
         $validated = $request->validate([
