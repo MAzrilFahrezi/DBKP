@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\HistoryBarangResource;
+use App\Http\Resources\HistoryKapalResource;
 use App\Http\Resources\HistoryResource;
 use App\Models\History;
+use App\Models\HistoryBarang;
+use App\Models\HistoryKapal;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -90,9 +94,14 @@ class authController extends Controller
 
     }
 
-    public function getHistory()
+    public function getHistoryBarang()
     {
-        return HistoryResource::collection(History::all());
+        return HistoryBarangResource::collection(HistoryBarang::all());
+
+    }
+    public function getHistoryKapal()
+    {
+        return HistoryKapalResource::collection(HistoryKapal::all());
 
     }
 }
