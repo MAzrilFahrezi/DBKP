@@ -30,10 +30,11 @@ Route::post('login', [authController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function (){
     Route::apiResource('kapal', kapalController::class);
     Route::apiResource('barang', barangController::class);
+    Route::apiResource('userr', authController::class);
     Route::get('users', [authController::class, 'getAllUser']);
     Route::get('history', [authController::class, 'getHistory']);
     Route::post('logout', [authController::class, 'logout']);
     Route::get('user', [authController::class, 'getUser']);
     Route::put('/updateUser', [authController::class, 'updateUser']);
-    Route::delete('/deleteUser/{$id}', [authController::class, 'destroy']);
+    Route::delete('/deleteUser', [authController::class, 'destroy']);
 });
