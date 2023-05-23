@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class History extends Model
 {
     use HasFactory;
-    protected $table = 'history_barang';
     protected $fillable = [
         'nama_user',
         'nama_kapal',
