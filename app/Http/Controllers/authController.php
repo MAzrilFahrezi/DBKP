@@ -94,6 +94,18 @@ class authController extends Controller
 
     }
 
+    public function destroy($id){
+        
+        $user = User::find($id);
+        if($user){
+            $user->delete();
+        }
+        return[
+            'Message' => 'Data user berhasil di hapus'
+        ];
+
+    }
+
     public function getHistory()
     {
         return HistoryResource::collection(History::all());
