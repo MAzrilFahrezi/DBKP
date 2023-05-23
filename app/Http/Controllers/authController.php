@@ -94,14 +94,10 @@ class authController extends Controller
 
     }
 
-    public function getHistoryBarang()
+    public function getHistory()
     {
-        return HistoryBarangResource::collection(HistoryBarang::all());
+        return HistoryResource::collection(History::all());
 
     }
-    public function getHistoryKapal()
-    {
-        return HistoryKapalResource::collection(HistoryKapal::all());
-
-    }
+   
 }

@@ -40,15 +40,17 @@ class kapalController extends Controller
         ]);
 
         $kapal = Kapal::create($validated);
-        $user_id = Auth::id();
-        $kapal_id = $kapal->id;
-        $aksi = "insert";
+        $user_id = Auth::user()->name;
+        $kapal_id = $kapal->kapals->nama_kapal;
+        $barang_id = "";
+        $aksi = "Insert";
         $history = [
-            'user_id' => $user_id,
-            'kapal_id' => $kapal_id,
+            'nama_user' => $user_id,
+            'nama_kapal' => $kapal_id,
+            'nama_barang' => $barang_id,
             'aksi' => $aksi,
         ];
-        HistoryKapal::create($history);
+        History::create($history);
 
         return[
             'Message' => 'Input Kapal Berhasil',
@@ -65,16 +67,17 @@ class kapalController extends Controller
         ]);
 
         $kapal = Kapal::find($id);
-        $kapal->update($validated);
-        $user_id = Auth::id();
-        $kapal_id = $id;
-        $aksi = "update";
+        $user_id = Auth::user()->name;
+        $kapal_id = $kapal->kapals->nama_kapal;
+        $barang_id = "";
+        $aksi = "Update";
         $history = [
-            'user_id' => $user_id,
-            'kapal_id' => $kapal_id,
+            'nama_user' => $user_id,
+            'nama_kapal' => $kapal_id,
+            'nama_barang' => $barang_id,
             'aksi' => $aksi,
         ];
-        HistoryKapal::create($history);
+        History::create($history);
 
         return [
             'Message' => 'Data Kapal Berhasil di Update'
@@ -86,15 +89,17 @@ class kapalController extends Controller
     {
         $kapal = Kapal::find($id);
         if($kapal){
-            $user_id = Auth::id();
-            $kapal_id = $id;
-            $aksi = "delete";
+            $user_id = Auth::user()->name;
+            $kapal_id = $kapal->kapals->nama_kapal;
+            $barang_id = "";
+            $aksi = "Deleted";
             $history = [
-                'user_id' => $user_id,
-                'kapal_id' => $kapal_id,
+                'nama_user' => $user_id,
+                'nama_kapal' => $kapal_id,
+                'nama_barang' => $barang_id,
                 'aksi' => $aksi,
             ];
-            HistoryKapal::create($history);
+            History::create($history);
             $kapal->delete();
             return [
                 'Message' => 'Data Kapal Berhasil di Hapus'

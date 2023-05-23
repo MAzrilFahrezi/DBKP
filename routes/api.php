@@ -31,8 +31,7 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::apiResource('kapal', kapalController::class);
     Route::apiResource('barang', barangController::class);
     Route::get('users', [authController::class, 'getAllUser']);
-    Route::get('history/barang', [authController::class, 'getHistoryBarang']);
-    Route::get('history/kapal', [authController::class, 'getHistoryKapal']);
+    Route::get('history', [authController::class, 'getHistory']);
     Route::post('logout', [authController::class, 'logout']);
     Route::get('user', [authController::class, 'getUser']);
     Route::put('/updateUser', [authController::class, 'updateUser']);

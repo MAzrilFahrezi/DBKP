@@ -49,18 +49,17 @@ class barangController extends Controller
         ]);
         
         $barang = Barang::create($validated);
-        $user_id = Auth::id();
-        $kapal_id = $request->kapal_id;
-        $barang_id = $barang->id;
-        $aksi = "insert";
-
+        $user_id = Auth::user()->name;
+        $kapal_id = $barang->kapals->nama_kapal;
+        $barang_id = $barang->nama_barang;
+        $aksi = "Insert";
         $history = [
-            'user_id' => $user_id,
-            'kapal_id' => $kapal_id,
-            'barang_id' => $barang_id,
+            'nama_user' => $user_id,
+            'nama_kapal' => $kapal_id,
+            'nama_barang' => $barang_id,
             'aksi' => $aksi,
         ];
-        HistoryBarang::create($history);
+        History::create($history);
 
         return[
             'Message' => 'Input Barang Berhasil',
@@ -86,19 +85,19 @@ class barangController extends Controller
             
         ]);
 
-        $kapal = Barang::find($id);
-        $kapal->update($validated);
-        $user_id = Auth::id();
-        $kapal_id = $request->kapal_id;
-        $barang_id = $id;
-        $aksi = "update";
+        $barang = Barang::find($id);
+        $barang->update($validated);
+        $user_id = Auth::user()->name;
+        $kapal_id = $barang->kapals->nama_kapal;
+        $barang_id = $barang->nama_barang;
+        $aksi = "Update";
         $history = [
-            'user_id' => $user_id,
-            'kapal_id' => $kapal_id,
-            'barang_id' => $barang_id,
+            'nama_user' => $user_id,
+            'nama_kapal' => $kapal_id,
+            'nama_barang' => $barang_id,
             'aksi' => $aksi,
         ];
-        HistoryBarang::create($history);
+        History::create($history);
         return [
             'Message' => 'Data Barang Berhasil di Update'
         ];
@@ -109,17 +108,17 @@ class barangController extends Controller
     {
         $kapal = Barang::find($id);
         if($kapal){
-            $user_id = Auth::id();
-            $kapal_id = $kapal->kapal_id;
-            $barang_id = $id;
+            $user_id = Auth::user()->name;
+            $kapal_id = $kapal->kapals->nama_kapal;
+            $barang_id = $kapal->nama_barang;
             $aksi = "delete";
             $history = [
-                'user_id' => $user_id,
-                'kapal_id' => $kapal_id,
-                'barang_id' => $barang_id,
+                'nama_user' => $user_id,
+                'nama_kapal' => $kapal_id,
+                'nama_barang' => $barang_id,
                 'aksi' => $aksi,
             ];
-            HistoryBarang::create($history);
+            History::create($history);
             $kapal->delete();
             return [
                 'Message' => 'Data Barang Berhasil di Hapus'
