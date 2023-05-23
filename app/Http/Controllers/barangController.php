@@ -87,8 +87,17 @@ class barangController extends Controller
 
         $kapal = Barang::find($id);
         $kapal->update($validated);
-
-
+        $user_id = Auth::id();
+        $kapal_id = $request->kapal_id;
+        $barang_id = $id;
+        $aksi = "update";
+        $history = [
+            'user_id' => $user_id,
+            'kapal_id' => $kapal_id,
+            'barang_id' => $barang_id,
+            'aksi' => $aksi,
+        ];
+        History::create($history);
         return [
             'Message' => 'Data Barang Berhasil di Update'
         ];
@@ -99,6 +108,17 @@ class barangController extends Controller
     {
         $kapal = Barang::find($id);
         if($kapal){
+            $user_id = Auth::id();
+            $kapal_id = $kapal->kapal_id;
+            $barang_id = $id;
+            $aksi = "delete";
+            $history = [
+                'user_id' => $user_id,
+                'kapal_id' => $kapal_id,
+                'barang_id' => $barang_id,
+                'aksi' => $aksi,
+            ];
+            History::create($history);
             $kapal->delete();
             return [
                 'Message' => 'Data Barang Berhasil di Hapus'
