@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\BarangResource;
 use App\Models\Barang;
+use App\Models\History;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class barangController extends Controller
 {
@@ -44,7 +47,19 @@ class barangController extends Controller
             'check_weight' => 'required|boolean',
         ]);
         
-        Barang::create($validated);
+        $barang = Barang::create($validated);
+        $user_id = Auth::id();
+        $kapal_id = $request->kapal_id;
+        $barang_id = $barang->id();
+        $aksi = "insert";
+
+        $history = [
+            'user_id' => $user_id,
+            'kapal_id' => $kapal_id,
+            'barang_id' => $barang_id,
+            'aksi' => $aksi,
+        ];
+        History::create($history);
 
         return[
             'Message' => 'Input Barang Berhasil',

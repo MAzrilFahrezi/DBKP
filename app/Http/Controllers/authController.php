@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\HistoryResource;
+use App\Models\History;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -85,6 +87,12 @@ class authController extends Controller
         return[
             'message' => 'Update Data Berhasil'
         ];
+
+    }
+
+    public function getHistory()
+    {
+        return HistoryResource::collection(History::all());
 
     }
 }
