@@ -45,6 +45,7 @@ class kapalController extends Controller
         $history = [
             'user_id' => $user_id,
             'kapal_id' => $kapal_id,
+            'barang_id' => 0,
             'aksi' => $aksi,
         ];
         History::create($history);
@@ -71,6 +72,7 @@ class kapalController extends Controller
         $history = [
             'user_id' => $user_id,
             'kapal_id' => $kapal_id,
+            'barang_id' => 0,
             'aksi' => $aksi,
         ];
         History::create($history);
@@ -91,6 +93,7 @@ class kapalController extends Controller
             $history = [
                 'user_id' => $user_id,
                 'kapal_id' => $kapal_id,
+                'barang_id' => 0,
                 'aksi' => $aksi,
             ];
             History::create($history);
