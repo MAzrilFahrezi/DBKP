@@ -75,7 +75,7 @@ class authController extends Controller
         return User::all();
     }
 
-    public function updateUser(Request $request, $id){
+    public function updateUser(Request $request){
         
         $validated = $request->validate([
             'name' => 'string',
@@ -90,18 +90,6 @@ class authController extends Controller
         $user->update($validated);
         return[
             'message' => 'Update Data Berhasil'
-        ];
-
-    }
-
-    public function destroy($id){
-        
-        $user = User::find($id);
-        if($user){
-            $user->delete();
-        }
-        return[
-            'Message' => 'Data user berhasil di hapus'
         ];
 
     }
