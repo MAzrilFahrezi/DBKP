@@ -50,7 +50,7 @@ class barangController extends Controller
         $barang = Barang::create($validated);
         $user_id = Auth::id();
         $kapal_id = $request->kapal_id;
-        $barang_id = $barang->id();
+        $barang_id = $barang->id;
         $aksi = "insert";
 
         $history = [
