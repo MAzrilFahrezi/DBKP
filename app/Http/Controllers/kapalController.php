@@ -42,8 +42,8 @@ class kapalController extends Controller
         $kapal = Kapal::create($validated);
         $user_id = Auth::user()->name;
         $kapal_id = $kapal->nama_kapal;
-        $barang_id = "";
-        $aksi = "Insert";
+        $barang_id = "-";
+        $aksi = "Tambah kapal";
         $history = [
             'nama_user' => $user_id,
             'nama_kapal' => $kapal_id,
@@ -69,8 +69,8 @@ class kapalController extends Controller
         $kapal = Kapal::find($id);
         $user_id = Auth::user()->name;
         $kapal_id = $kapal->nama_kapal;
-        $barang_id = "";
-        $aksi = "Update";
+        $barang_id = "-";
+        $aksi = "Update kapal";
         $history = [
             'nama_user' => $user_id,
             'nama_kapal' => $kapal_id,
@@ -91,8 +91,8 @@ class kapalController extends Controller
         if($kapal){
             $user_id = Auth::user()->name;
             $kapal_id = $kapal->nama_kapal;
-            $barang_id = "";
-            $aksi = "Deleted";
+            $barang_id = "-";
+            $aksi = "Delete kapal";
             $history = [
                 'nama_user' => $user_id,
                 'nama_kapal' => $kapal_id,

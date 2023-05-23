@@ -52,7 +52,7 @@ class barangController extends Controller
         $user_id = Auth::user()->name;
         $kapal_id = $barang->kapals->nama_kapal;
         $barang_id = $barang->nama_barang;
-        $aksi = "Insert";
+        $aksi = "Tambah alat";
         $history = [
             'nama_user' => $user_id,
             'nama_kapal' => $kapal_id,
@@ -90,7 +90,7 @@ class barangController extends Controller
         $user_id = Auth::user()->name;
         $kapal_id = $barang->kapals->nama_kapal;
         $barang_id = $barang->nama_barang;
-        $aksi = "Update";
+        $aksi = "Update alat";
         $history = [
             'nama_user' => $user_id,
             'nama_kapal' => $kapal_id,
@@ -111,7 +111,7 @@ class barangController extends Controller
             $user_id = Auth::user()->name;
             $kapal_id = $kapal->kapals->nama_kapal;
             $barang_id = $kapal->nama_barang;
-            $aksi = "delete";
+            $aksi = "delete alat";
             $history = [
                 'nama_user' => $user_id,
                 'nama_kapal' => $kapal_id,
