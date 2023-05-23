@@ -30,7 +30,7 @@ Route::post('login', [authController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function (){
     Route::apiResource('kapal', kapalController::class);
     Route::apiResource('barang', barangController::class);
-    Route::apiResource('users', authController::class);
+    Route::get('users', [authController::class, 'getAllUser']);
     Route::post('logout', [authController::class, 'logout']);
     Route::get('user', [authController::class, 'getUser']);
     Route::put('/updateUser', [authController::class, 'updateUser']);
