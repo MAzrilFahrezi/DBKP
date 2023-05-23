@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Resources\KapalResource;
 use App\Models\History;
+use App\Models\HistoryKapal;
 use App\Models\Kapal;
 use Illuminate\Support\Facades\Auth;
 
@@ -45,10 +46,9 @@ class kapalController extends Controller
         $history = [
             'user_id' => $user_id,
             'kapal_id' => $kapal_id,
-            'barang_id' => 0,
             'aksi' => $aksi,
         ];
-        History::create($history);
+        HistoryKapal::create($history);
 
         return[
             'Message' => 'Input Kapal Berhasil',
@@ -72,10 +72,9 @@ class kapalController extends Controller
         $history = [
             'user_id' => $user_id,
             'kapal_id' => $kapal_id,
-            'barang_id' => 0,
             'aksi' => $aksi,
         ];
-        History::create($history);
+        HistoryKapal::create($history);
 
         return [
             'Message' => 'Data Kapal Berhasil di Update'
@@ -93,10 +92,9 @@ class kapalController extends Controller
             $history = [
                 'user_id' => $user_id,
                 'kapal_id' => $kapal_id,
-                'barang_id' => 0,
                 'aksi' => $aksi,
             ];
-            History::create($history);
+            HistoryKapal::create($history);
             $kapal->delete();
             return [
                 'Message' => 'Data Kapal Berhasil di Hapus'

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\BarangResource;
 use App\Models\Barang;
 use App\Models\History;
+use App\Models\HistoryBarang;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -59,7 +60,7 @@ class barangController extends Controller
             'barang_id' => $barang_id,
             'aksi' => $aksi,
         ];
-        History::create($history);
+        HistoryBarang::create($history);
 
         return[
             'Message' => 'Input Barang Berhasil',
@@ -97,7 +98,7 @@ class barangController extends Controller
             'barang_id' => $barang_id,
             'aksi' => $aksi,
         ];
-        History::create($history);
+        HistoryBarang::create($history);
         return [
             'Message' => 'Data Barang Berhasil di Update'
         ];
@@ -118,7 +119,7 @@ class barangController extends Controller
                 'barang_id' => $barang_id,
                 'aksi' => $aksi,
             ];
-            History::create($history);
+            HistoryBarang::create($history);
             $kapal->delete();
             return [
                 'Message' => 'Data Barang Berhasil di Hapus'

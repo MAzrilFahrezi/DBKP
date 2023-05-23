@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class History extends Model
+class HistoryBarang extends Model
 {
     use HasFactory;
-    protected $table = 'table_history';
+    protected $table = 'history_barang';
     protected $fillable = [
         'user_id',
         'kapal_id',
