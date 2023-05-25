@@ -67,6 +67,7 @@ class kapalController extends Controller
         ]);
 
         $kapal = Kapal::find($id);
+        $kapal->update($validated);
         $user_id = Auth::user()->name;
         $kapal_id = $kapal->nama_kapal;
         $barang_id = "-";
