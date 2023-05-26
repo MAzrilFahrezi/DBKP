@@ -101,13 +101,10 @@ class authController extends Controller
             'email' => 'string',
             'no_hp' => 'string',
             'is_admin' => 'string',
-            'password' => 'nullable|String',
+            'password' => 'String',
         ]);
         
         $user = User::find($id);
-        if (isset($validated['password'])) {
-            $user->password = bcrypt($validated['password']);
-        }
         $user->update($validated);
         return[
             'message' => 'Update Data Berhasil'
