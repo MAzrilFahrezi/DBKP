@@ -101,7 +101,7 @@ class authController extends Controller
             'email' => 'string',
             'no_hp' => 'string',
             'is_admin' => 'string',
-            'password' => 'String',
+            'password' => 'string',
         ]);
         
         $user = User::find($id);
