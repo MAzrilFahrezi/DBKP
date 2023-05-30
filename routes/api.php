@@ -27,6 +27,7 @@ use App\Http\Controllers\kapalController;
 
 Route::post('register', [authController::class, 'register']);
 Route::post('login', [authController::class, 'login']);
+Route::get('userr', [authController::class, 'getUser']);
 Route::middleware('auth:sanctum')->group(function (){
     Route::apiResource('kapal', kapalController::class);
     Route::apiResource('barang', barangController::class);
