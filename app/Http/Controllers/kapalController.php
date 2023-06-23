@@ -25,9 +25,11 @@ class kapalController extends Controller
 
         } else {
             return KapalResource::collection(Kapal::all());
+
+           // $kapal = Kapal::orderBy('nama_kapal', 'asc')->get();
+           // return KapalResource::collection($kapal);
         }
 
-        
     }
 
     public function store(Request $request)
@@ -40,14 +42,14 @@ class kapalController extends Controller
         ]);
 
         $kapal = Kapal::create($validated);
-        $user_id = Auth::user()->name;
-        $kapal_id = $kapal->nama_kapal;
-        $barang_id = "-";
-        $aksi = "Tambah kapal";
+        $user_id = Auth::id();
+        $kapal_id = $kapal->id;
+        $barang_id = 1;
+        $aksi = "Tambah data kapal";
         $history = [
-            'nama_user' => $user_id,
-            'nama_kapal' => $kapal_id,
-            'nama_barang' => $barang_id,
+            'user_id' => $user_id,
+            'kapal_id' => $kapal_id,
+            'barang_id' => $barang_id,
             'aksi' => $aksi,
         ];
         History::create($history);
@@ -68,20 +70,20 @@ class kapalController extends Controller
 
         $kapal = Kapal::find($id);
         $kapal->update($validated);
-        $user_id = Auth::user()->name;
-        $kapal_id = $kapal->nama_kapal;
-        $barang_id = "-";
-        $aksi = "Update kapal";
+        $user_id = Auth::id();
+        $kapal_id = $kapal->id;
+        $barang_id = 1;
+        $aksi = "Ubah data kapal";
         $history = [
-            'nama_user' => $user_id,
-            'nama_kapal' => $kapal_id,
-            'nama_barang' => $barang_id,
+            'user_id' => $user_id,
+            'kapal_id' => $kapal_id,
+            'barang_id' => $barang_id,
             'aksi' => $aksi,
         ];
         History::create($history);
 
         return [
-            'Message' => 'Data Kapal Berhasil di Update'
+            'Message' => 'Data Kapal Berhasil di Ubah'
         ];
 
     }
@@ -90,14 +92,14 @@ class kapalController extends Controller
     {
         $kapal = Kapal::find($id);
         if($kapal){
-            $user_id = Auth::user()->name;
-            $kapal_id = $kapal->nama_kapal;
-            $barang_id = "-";
-            $aksi = "Delete kapal";
+            $user_id = Auth::id();
+            $kapal_id = $kapal->id;
+            $barang_id = 1;
+            $aksi = "Hapus data kapal";
             $history = [
-                'nama_user' => $user_id,
-                'nama_kapal' => $kapal_id,
-                'nama_barang' => $barang_id,
+                'user_id' => $user_id,
+                'kapal_id' => $kapal_id,
+                'barang_id' => $barang_id,
                 'aksi' => $aksi,
             ];
             History::create($history);

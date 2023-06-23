@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\authController;
 use App\Http\Controllers\barangController;
+use App\Http\Controllers\historyController;
 use App\Http\Controllers\inspectionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -33,7 +34,7 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::apiResource('barang', barangController::class);
     Route::apiResource('userr', authController::class);
     Route::get('users', [authController::class, 'getAllUser']);
-    Route::get('history', [authController::class, 'getHistory']);
+    Route::get('history', [historyController::class, 'getHistory']);
     Route::post('logout', [authController::class, 'logout']);
     Route::get('user', [authController::class, 'getUser']);
     Route::put('/updateUser', [authController::class, 'updateUser']);

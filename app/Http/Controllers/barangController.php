@@ -49,14 +49,14 @@ class barangController extends Controller
         ]);
         
         $barang = Barang::create($validated);
-        $user_id = Auth::user()->name;
-        $kapal_id = $barang->kapals->nama_kapal;
-        $barang_id = $barang->nama_barang;
+        $user_id = Auth::id();
+        $kapal_id = $barang->kapals->id;
+        $barang_id = $barang->id;
         $aksi = "Tambah alat";
         $history = [
-            'nama_user' => $user_id,
-            'nama_kapal' => $kapal_id,
-            'nama_barang' => $barang_id,
+            'user_id' => $user_id,
+            'kapal_id' => $kapal_id,
+            'barang_id' => $barang_id,
             'aksi' => $aksi,
         ];
         History::create($history);
@@ -87,14 +87,14 @@ class barangController extends Controller
 
         $barang = Barang::find($id);
         $barang->update($validated);
-        $user_id = Auth::user()->name;
-        $kapal_id = $barang->kapals->nama_kapal;
-        $barang_id = $barang->nama_barang;
-        $aksi = "Update alat";
+        $user_id = Auth::id();
+        $kapal_id = $barang->kapals->id;
+        $barang_id = $barang->id;
+        $aksi = "ubah data alat";
         $history = [
-            'nama_user' => $user_id,
-            'nama_kapal' => $kapal_id,
-            'nama_barang' => $barang_id,
+            'user_id' => $user_id,
+            'kapal_id' => $kapal_id,
+            'barang_id' => $barang_id,
             'aksi' => $aksi,
         ];
         History::create($history);
@@ -106,20 +106,20 @@ class barangController extends Controller
 
     public function destroy($id)
     {
-        $kapal = Barang::find($id);
-        if($kapal){
-            $user_id = Auth::user()->name;
-            $kapal_id = $kapal->kapals->nama_kapal;
-            $barang_id = $kapal->nama_barang;
-            $aksi = "delete alat";
+        $barang = Barang::find($id);
+        if($barang){
+            $user_id = Auth::id();
+            $kapal_id = $barang->kapals->id;
+            $barang_id = $barang->id;
+            $aksi = "hapus data alat";
             $history = [
-                'nama_user' => $user_id,
-                'nama_kapal' => $kapal_id,
-                'nama_barang' => $barang_id,
+                'user_id' => $user_id,
+                'kapal_id' => $kapal_id,
+                'barang_id' => $barang_id,
                 'aksi' => $aksi,
             ];
             History::create($history);
-            $kapal->delete();
+            $barang->delete();
             return [
                 'Message' => 'Data Barang Berhasil di Hapus'
             ];

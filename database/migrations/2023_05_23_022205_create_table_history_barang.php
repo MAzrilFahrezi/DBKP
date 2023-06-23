@@ -13,11 +13,16 @@ return new class extends Migration
     {
         Schema::create('histories', function (Blueprint $table) {
             $table->id();
-            $table->string("nama_user");
-            $table->string("nama_kapal");
-            $table->string("nama_barang");
-            $table->String("aksi");
+            $table->unsignedBigInteger("user_id");
+            $table->unsignedBigInteger('kapal_id');
+            $table->unsignedBigInteger('barang_id');
+            $table->string("aksi");
             $table->timestamps();
+        });
+        Schema::table('histories', function (Blueprint $table) {
+            $table->foreign('kapal_id')->references('id')->on('kapals');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('barang_id')->references('id')->on('barangs');
         });
     }
 

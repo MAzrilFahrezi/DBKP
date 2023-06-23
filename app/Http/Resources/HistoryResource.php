@@ -15,10 +15,11 @@ class HistoryResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'nama_user' => $this -> nama_user,
-            'nama_kapal' => $this -> nama_kapal,
-            'nama_barang' => $this-> nama_barang,
+            'nama_user' => $this -> users -> name,
+            'nama_kapal' => $this -> kapals -> nama_kapal,
+            'nama_barang' => $this-> barangs -> nama_barang,
             'aksi' => $this->aksi,
+            'tanggal' => $this->created_at ->format("Y-m-d"),
         ];
 
         

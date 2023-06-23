@@ -124,10 +124,6 @@ class authController extends Controller
 
     }
 
-    public function getHistory()
-    {
-        return HistoryResource::collection(History::all());
 
-    }
    
 }

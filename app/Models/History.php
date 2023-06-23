@@ -9,24 +9,24 @@ class History extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'nama_user',
-        'nama_kapal',
-        'nama_barang',
+        'user_id',
+        'kapal_id',
+        'barang_id',
         'aksi',
     ];
 
-    // public function kapals()
-    // {
-    //     return $this->belongsTo(Kapal::class, 'kapal_id', 'id');
-    // }
-    
-    // public function barangs()
-    // {
-    //     return $this->belongsTo(Barang::class, 'barang_id', 'id');
-    // }
+     public function kapals()
+     {
+         return $this->hasOne(Kapal::class, 'id', 'kapal_id');
+     }
 
-    // public function users()
-    // {
-    //     return $this->belongsTo(User::class, 'user_id', 'id');
-    // }
+    public function barangs()
+    {
+        return $this->hasOne(Barang::class,'id', 'barang_id');
+    }
+
+    public function users()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 }
