@@ -14,8 +14,8 @@ class historyController extends Controller
         $tanggal_akhir = $request->query('tanggal_akhir');
 
         if($tanggal_mulai && $tanggal_akhir) {
-
             // $history = History::whereBetween('created_at', [$tanggal_mulai, $tanggal_akhir])->get();
+            
             $history = History::whereDate('created_at', '>=', $tanggal_mulai)
                                 ->whereDate('created_at', '<=', $tanggal_akhir)
                                 ->get();
