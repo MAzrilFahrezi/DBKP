@@ -20,12 +20,15 @@ class kapalController extends Controller
 
         if($nama) {
 
-            $kapal = Kapal::where('nama_kapal', 'LIKE', "%{$nama}%")->get();
+            $kapal = Kapal::where('nama_kapal', 'LIKE', "%{$nama}%")
+            ->skip(1)
+            ->get();
             return KapalResource::collection($kapal);
 
         } else {
-            return KapalResource::collection(Kapal::all());
-
+            $kapal = Kapal::where('id', '>', 1)
+            ->get();
+            return KapalResource::collection($kapal);
            // $kapal = Kapal::orderBy('nama_kapal', 'asc')->get();
            // return KapalResource::collection($kapal);
         }
