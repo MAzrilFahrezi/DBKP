@@ -23,19 +23,19 @@ class History extends Model
 
     public function kapals()
     {
-         return $this->hasOne(Kapal::class, 'id', 'kapal_id');
-        // return $this->belongsTo(Kapal::class, 'kapal_id', 'id');
+        //  return $this->hasOne(Kapal::class, 'id', 'kapal_id');
+        return $this->belongsTo(Kapal::class, 'kapal_id', 'id')->withTrashed();
     }
 
     public function barangs()
     {
-        return $this->hasOne(Barang::class,'id', 'barang_id');
-        // return $this->belongsTo(Barang::class, 'barang_id', 'id');
+        // return $this->hasOne(Barang::class,'id', 'barang_id');
+        return $this->belongsTo(Barang::class, 'barang_id', 'id')->withTrashed();
     }
 
     public function users()
     {
-        return $this->hasOne(User::class, 'id', 'user_id');
-        // return $this->belongsTo(User::class, 'user_id', 'id');
+        // return $this->hasOne(User::class, 'id', 'user_id');
+        return $this->belongsTo(User::class, 'user_id', 'id')->withTrashed();
     }
 }
