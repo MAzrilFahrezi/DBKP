@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("port_registration");
             $table->text("gambar");
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

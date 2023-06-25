@@ -27,6 +27,7 @@ return new class extends Migration
             $table->boolean("check_weight");
             $table->unsignedBigInteger("kapal_id");
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

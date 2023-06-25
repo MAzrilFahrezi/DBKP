@@ -23,6 +23,8 @@ class historyController extends Controller
 
         } else {
             return HistoryResource::collection(History::all());
+            // $histories = History::with(['barang', 'kapal', 'users'])->get();
+            // return HistoryResource::collection($histories);
         }
         
 
