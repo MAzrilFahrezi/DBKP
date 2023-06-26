@@ -23,10 +23,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Barang::create([
-            "nama_barang" => "dummy barang",
-            "volume" => "10",
-            "manufaktur" => "dummy manufaktur",
-            "gambar" => "dummy gambar",
+            "nama_barang" => "-",
+            "volume" => "-",
+            "manufaktur" => "-",
+            "gambar" => "-",
             "date_of_inspection" => "2002-10-10",
             "next_date_of_inspection" => "2002-10-10",
             "new_supply" => 0,
